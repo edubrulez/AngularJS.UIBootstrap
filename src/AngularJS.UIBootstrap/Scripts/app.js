@@ -10,27 +10,30 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
         // UI States, URL Routing & Mapping. For more info see: https://github.com/angular-ui/ui-router
         // ------------------------------------------------------------------------------------------------------------
 
+        var appRoot = '/views/app';
+        var partialsRoot = appRoot + '/partials';
+        
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: '/views/index',
+                templateUrl: appRoot+'/index',
                 controller: 'HomeCtrl'
 
             })
             .state('about', {
                 url: '/about',
-                templateUrl: '/views/about',
+                templateUrl: partialsRoot+'/about',
                 controller: 'AboutCtrl'
             })
             .state('login', {
                 url: '/login',
                 layout: 'basic',
-                templateUrl: '/views/login',
+                templateUrl: partialsRoot+'/login',
                 controller: 'LoginCtrl'
             })
             .state('otherwise', {
                 url: '*path',
-                templateUrl: '/views/404',
+                templateUrl: partialsRoot+'/404',
                 controller: 'Error404Ctrl'
             });
 
