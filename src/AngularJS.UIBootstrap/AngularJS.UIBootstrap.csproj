@@ -135,6 +135,11 @@
     <Content Include="Content\app.less" />
     <Content Include="Content\variables.less" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularUI\ui-router.js" />
+    <Content Include="Scripts\AngularUI\ui-router.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\app\controllers\controllers.js" />
@@ -149,6 +154,7 @@
     <Content Include="Scripts\app\filters\filters.spec.js">
       <DependentUpon>filters.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
@@ -161,8 +167,6 @@
     <Content Include="Scripts\ui-bootstrap-tpls-0.10.0.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.10.0.min.js" />
     <Content Include="Scripts\vendor\angular-csp.css" />
-    <Content Include="Scripts\vendor\angular-ui-router.js" />
-    <Content Include="Scripts\vendor\angular-ui-router.min.js" />
     <Content Include="Scripts\vendor\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\vendor\i18n\angular-locale_af-za.js" />
     <Content Include="Scripts\vendor\i18n\angular-locale_af.js" />
@@ -414,7 +418,6 @@
     <Content Include="Scripts\vendor\angular-cookies.min.js" />
     <Content Include="Scripts\vendor\angular-loader.js" />
     <Content Include="Scripts\vendor\angular-loader.min.js" />
-    <Content Include="Scripts\vendor\angular-mocks.js" />
     <Content Include="Scripts\vendor\angular-resource.js" />
     <Content Include="Scripts\vendor\angular-resource.min.js" />
     <Content Include="Scripts\vendor\angular-route.js" />
@@ -431,9 +434,6 @@
     <Content Include="Scripts\vendor\angular-loader.min.js.map" />
     <Content Include="Scripts\vendor\angular-cookies.min.js.map" />
     <Content Include="Scripts\vendor\angular-animate.min.js.map" />
-    <Content Include="Scripts\vendor\angular.js" />
-    <Content Include="Scripts\vendor\angular.min.js" />
-    <Content Include="Scripts\vendor\angular.min.js.map" />
     <Content Include="Scripts\vendor\errors.json" />
     <Content Include="Scripts\vendor\jasmine-html.js" />
     <Content Include="Scripts\vendor\jasmine.js" />

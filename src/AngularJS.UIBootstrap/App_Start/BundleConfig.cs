@@ -21,9 +21,11 @@ namespace App.AngularJS.UIBootstrap
                 "~/scripts/ui-bootstrap-{version}.js",
                 "~/scripts/ui-bootstrap-tpls-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/js/app")
-                .Include("~/scripts/vendor/angular-ui-router.js")
-                .IncludeDirectory("~/scripts/app", "*.js", true));
+            bundles.Add(new ScriptBundle("~/js/angular").Include(
+                "~/scripts/angular.js",
+                "~/scripts/AngularUI/ui-router.js"));
+
+            bundles.Add(new ScriptBundle("~/js/app").IncludeDirectory("~/scripts/app", "*.js", true));
         }
     }
 }
