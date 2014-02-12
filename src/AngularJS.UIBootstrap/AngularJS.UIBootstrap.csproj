@@ -137,23 +137,23 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\controllers.js" />
-    <Content Include="Scripts\controllers.spec.js">
+    <Content Include="Scripts\app\controllers\controllers.js" />
+    <Content Include="Scripts\app\controllers\controllers.spec.js">
       <DependentUpon>controllers.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\directives.js" />
-    <Content Include="Scripts\directives.spec.js">
+    <Content Include="Scripts\app\directives\directives.js" />
+    <Content Include="Scripts\app\directives\directives.spec.js">
       <DependentUpon>directives.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\filters.js" />
-    <Content Include="Scripts\filters.spec.js">
+    <Content Include="Scripts\app\filters\filters.js" />
+    <Content Include="Scripts\app\filters\filters.spec.js">
       <DependentUpon>filters.js</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
-    <Content Include="Scripts\services.js" />
-    <Content Include="Scripts\services.spec.js">
+    <Content Include="Scripts\app\services\services.js" />
+    <Content Include="Scripts\app\services\services.spec.js">
       <DependentUpon>services.js</DependentUpon>
     </Content>
     <Content Include="Scripts\ui-bootstrap-0.10.0.js" />
@@ -487,7 +487,7 @@
     <Content Include="Scripts\vendor\jquery-2.0.3.min.js" />
     <Content Include="Scripts\vendor\jquery-2.0.3.min.map" />
     <None Include="Scripts\_references.js" />
-    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\app\app.js" />
     <Content Include="Views\Jasmine\SpecRunner.cshtml" />
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="crossdomain.xml" />
