@@ -15,7 +15,7 @@ namespace App.AngularJS.UIBootstrap
         {
             bundles.Add(new StyleBundle("~/content/css/app").Include("~/content/app.css"));
 
-            bundles.Add(new ScriptBundle("~/js/jquery").Include("~/scripts/vendor/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/js/jquery").Include("~/scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/js/bootstrap").Include(
                 "~/scripts/ui-bootstrap-{version}.js",
