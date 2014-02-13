@@ -23,9 +23,16 @@ namespace App.AngularJS.UIBootstrap
 
             bundles.Add(new ScriptBundle("~/js/angular").Include(
                 "~/scripts/angular.js",
+                "~/scripts/angular-mocks.js",
                 "~/scripts/AngularUI/ui-router.js"));
 
             bundles.Add(new ScriptBundle("~/js/app").IncludeDirectory("~/scripts/app", "*.js", true));
+
+            bundles.Add(new ScriptBundle("~/js/jasmine").Include(
+                "~/scripts/jasmine/jasmine.js",
+                "~/scripts/jasmine/jasmine-html.js"));
+
+            bundles.Add(new ScriptBundle("~/js/tests").IncludeDirectory("~/scripts/tests", "*.js", true));
         }
     }
 }

@@ -127,12 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\jasmine\jasmine.css" />
-    <Content Include="Content\jasmine\jasmine_favicon.png" />
     <Content Include="Content\app.css">
       <DependentUpon>app.less</DependentUpon>
     </Content>
     <Content Include="Content\app.less" />
+    <Content Include="Content\jasmine\jasmine.css" />
+    <Content Include="Content\jasmine\jasmine_favicon.png" />
     <Content Include="Content\variables.less" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -143,25 +143,24 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\app\controllers\controllers.js" />
-    <Content Include="Scripts\app\controllers\controllers.spec.js">
-      <DependentUpon>controllers.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\app\directives\directives.js" />
-    <Content Include="Scripts\app\directives\directives.spec.js">
-      <DependentUpon>directives.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\app\filters\filters.js" />
-    <Content Include="Scripts\app\filters\filters.spec.js">
-      <DependentUpon>filters.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\jasmine\jasmine-html.js" />
+    <Content Include="Scripts\jasmine\jasmine.js" />
+    <Content Include="Scripts\jasmine\MIT.LICENSE" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\jasmine-samples\Player.js" />
+    <Content Include="Scripts\jasmine-samples\PlayerSpec.js" />
+    <Content Include="Scripts\jasmine-samples\Song.js" />
+    <Content Include="Scripts\jasmine-samples\SpecHelper.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Scripts\app\services\services.js" />
-    <Content Include="Scripts\app\services\services.spec.js">
-      <DependentUpon>services.js</DependentUpon>
-    </Content>
+    <Content Include="Scripts\tests\controllers\controllers.spec.js" />
+    <Content Include="Scripts\tests\directives\directives.spec.js" />
+    <Content Include="Scripts\tests\filters\filters.spec.js" />
+    <Content Include="Scripts\tests\services\services.spec.js" />
     <Content Include="Scripts\ui-bootstrap-0.10.0.js" />
     <Content Include="Scripts\ui-bootstrap-0.10.0.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.10.0.js" />
@@ -435,8 +434,6 @@
     <Content Include="Scripts\vendor\angular-cookies.min.js.map" />
     <Content Include="Scripts\vendor\angular-animate.min.js.map" />
     <Content Include="Scripts\vendor\errors.json" />
-    <Content Include="Scripts\vendor\jasmine-html.js" />
-    <Content Include="Scripts\vendor\jasmine.js" />
     <Content Include="Scripts\.jshintrc" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -513,6 +510,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\JasmineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
