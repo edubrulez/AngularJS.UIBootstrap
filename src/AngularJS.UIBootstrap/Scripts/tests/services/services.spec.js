@@ -1,4 +1,4 @@
-﻿/// <reference path="_references.js" />
+﻿/// <reference path="~/Scripts/_references.js" />
 /// <reference path="~/Scripts/app/services/services.js" />
 
 'use strict';
