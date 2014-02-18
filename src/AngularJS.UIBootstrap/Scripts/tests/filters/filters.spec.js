@@ -1,5 +1,5 @@
 ﻿/// <reference path="_references.js" />
-/// <reference path="filters.js" />
+/// <reference path="~/Scripts/app/filters/filters.js" />
 
 'use strict';
 

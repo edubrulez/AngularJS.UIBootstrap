@@ -1,5 +1,5 @@
 ﻿/// <reference path="_references.js" />
-/// <reference path="directives.js" />
+/// <reference path="../../app/directives/directives.js" />
 
 'use strict';
 

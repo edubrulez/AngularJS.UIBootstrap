@@ -1,4 +1,7 @@
-﻿'use strict';
+﻿/// <reference path="../../_references.js" />
+/// <reference path="../../app/controllers/about.js" />
+
+'use strict';
 
 describe('Controllers: AboutCtrl', function () {
     var $scope, ctrl;

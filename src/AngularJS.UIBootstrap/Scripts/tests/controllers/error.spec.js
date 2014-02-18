@@ -1,5 +1,5 @@
-﻿/// <reference path="_references.js" />
-/// <reference path="controllers.js" />
+﻿/// <reference path="../../_references.js" />
+/// <reference path="../../app/controllers/error.js" />
 
 'use strict';
 
