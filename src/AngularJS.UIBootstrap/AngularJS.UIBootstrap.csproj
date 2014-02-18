@@ -146,7 +146,6 @@
     <Content Include="Scripts\app\controllers\login.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\app\controllers\controllers.js" />
     <Content Include="Scripts\app\directives\directives.js" />
     <Content Include="Scripts\app\filters\filters.js" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -161,7 +160,9 @@
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Scripts\app\services\services.js" />
-    <Content Include="Scripts\tests\controllers\controllers.spec.js" />
+    <Content Include="Scripts\tests\controllers\about.spec.js" />
+    <Content Include="Scripts\tests\controllers\login.spec.js" />
+    <Content Include="Scripts\tests\controllers\home.spec.js" />
     <Content Include="Scripts\tests\directives\directives.spec.js" />
     <Content Include="Scripts\tests\filters\filters.spec.js" />
     <Content Include="Scripts\tests\services\services.spec.js" />
@@ -483,6 +484,7 @@
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Scripts\tests\controllers\error.spec.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Views\Jasmine\SpecRunner.cshtml" />
