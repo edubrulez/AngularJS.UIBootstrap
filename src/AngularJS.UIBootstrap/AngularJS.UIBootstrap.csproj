@@ -140,6 +140,10 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AngularUI\ui-router.js" />
     <Content Include="Scripts\AngularUI\ui-router.min.js" />
+    <Content Include="Scripts\app\controllers\about.js" />
+    <Content Include="Scripts\app\controllers\error.js" />
+    <Content Include="Scripts\app\controllers\home.js" />
+    <Content Include="Scripts\app\controllers\login.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\app\controllers\controllers.js" />
