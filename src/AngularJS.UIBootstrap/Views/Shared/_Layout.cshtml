@@ -35,7 +35,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="./login">Sign In</a>
+                        <a ng-hide="user" href="./login">Sign In</a>
+                        <a ng-show="user" ng-click="logout(user)">Sign Out</a>
                     </li>
                 </ul>
             </nav>

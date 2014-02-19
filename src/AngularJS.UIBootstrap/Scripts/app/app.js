@@ -7,7 +7,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
 
     // Gets executed during the provider registrations and configuration phase. Only providers and constants can be
     // injected here. This is to prevent accidental instantiation of services before they have been fully configured.
-    .config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
+    .config(['$stateProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $locationProvider, $httpProvider) {
 
         // UI States, URL Routing & Mapping. For more info see: https://github.com/angular-ui/ui-router
         // ------------------------------------------------------------------------------------------------------------
@@ -41,11 +41,25 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
 
         $locationProvider.html5Mode(true);
 
+        $httpProvider.responseInterceptors.push(function ($q, $location) {
+            return function (promise) {
+                return promise.then(
+                    function (response) {
+                        return response;
+                    },
+                    function (response) {
+                        if (response.status === 401)
+                            $location.url('/login');
+                        return $q.reject(response);
+                    }
+                );
+            };
+        });
     }])
 
     // Gets executed after the injector is created and are used to kickstart the application. Only instances and constants
     // can be injected here. This is to prevent further system configuration during application run time.
-    .run(['$templateCache', '$rootScope', '$state', '$stateParams', function ($templateCache, $rootScope, $state, $stateParams) {
+    .run(['$templateCache', '$rootScope', '$state', '$stateParams', '$http', '$window', function ($templateCache, $rootScope, $state, $stateParams, $http, $window) {
 
         // <ui-view> contains a pre-rendered template for the current view
         // caching it will prevent a round-trip to a server at the first page load
@@ -62,4 +76,14 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
             // based on which page the user is located
             $rootScope.layout = toState.layout;
         });
+
+        $rootScope.logout = function (user) {
+            $rootScope.message = 'Logged out.';
+            $http.post('api/account/logout', user)
+                 .success(function (data, status, headers, config) {
+                     //localStorageService.clearAll();
+                     $rootScope.user = {};
+                     $window.location.href = '/';
+                 });
+        };
     }]);
