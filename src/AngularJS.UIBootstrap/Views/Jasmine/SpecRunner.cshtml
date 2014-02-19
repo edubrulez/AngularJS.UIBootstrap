@@ -9,22 +9,18 @@
 
     <link rel="shortcut icon" type="image/png" href="~/content/jasmine/jasmine_favicon.png">
     <link rel="stylesheet" type="text/css" href="~/content/jasmine/jasmine.css">
-    <script src="~/scripts/vendor/jasmine.js"></script>
-    <script src="~/scripts/vendor/jasmine-html.js"></script>
-
-    <script src="~/scripts/vendor/angular.js"></script>
-    <script src="~/scripts/vendor/angular-mocks.js"></script>
-    <script src="~/scripts/vendor/angular-ui-router.js"></script>
+    
+    @Scripts.Render("~/js/jasmine")
+    @Scripts.Render("~/js/angular")
 
     <!-- include source files here... -->
-    <script src="~/scripts/app.js"></script>
-    <script src="~/scripts/controllers.js"></script>
+    @Scripts.Render("~/js/app")
 
     <!-- include spec files here... -->
-    <script src="~/scripts/controllersSpec.js"></script>
+    @Scripts.Render("~/js/tests")
 
-    <script>
-        (function() {
+    <script type="text/javascript">
+        (function () {
             var jasmineEnv = jasmine.getEnv();
             jasmineEnv.updateInterval = 1000;
 
@@ -32,13 +28,13 @@
 
             jasmineEnv.addReporter(htmlReporter);
 
-            jasmineEnv.specFilter = function(spec) {
+            jasmineEnv.specFilter = function (spec) {
                 return htmlReporter.specFilter(spec);
             };
 
             var currentWindowOnload = window.onload;
 
-            window.onload = function() {
+            window.onload = function () {
                 if (currentWindowOnload) {
                     currentWindowOnload();
                 }

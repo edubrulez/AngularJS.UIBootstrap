@@ -15,19 +15,24 @@ namespace App.AngularJS.UIBootstrap
         {
             bundles.Add(new StyleBundle("~/content/css/app").Include("~/content/app.css"));
 
-            bundles.Add(new ScriptBundle("~/js/jquery").Include("~/scripts/vendor/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/js/jquery").Include("~/scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/js/bootstrap").Include(
                 "~/scripts/ui-bootstrap-{version}.js",
                 "~/scripts/ui-bootstrap-tpls-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/js/app").Include(
-                "~/scripts/vendor/angular-ui-router.js",
-                "~/scripts/filters.js",
-                "~/scripts/services.js",
-                "~/scripts/directives.js",
-                "~/scripts/controllers.js",
-                "~/scripts/app.js"));
+            bundles.Add(new ScriptBundle("~/js/angular").Include(
+                "~/scripts/angular.js",
+                "~/scripts/angular-mocks.js",
+                "~/scripts/AngularUI/ui-router.js"));
+
+            bundles.Add(new ScriptBundle("~/js/app").IncludeDirectory("~/scripts/app", "*.js", true));
+
+            bundles.Add(new ScriptBundle("~/js/jasmine").Include(
+                "~/scripts/jasmine/jasmine.js",
+                "~/scripts/jasmine/jasmine-html.js"));
+
+            bundles.Add(new ScriptBundle("~/js/tests").IncludeDirectory("~/scripts/tests", "*.js", true));
         }
     }
 }

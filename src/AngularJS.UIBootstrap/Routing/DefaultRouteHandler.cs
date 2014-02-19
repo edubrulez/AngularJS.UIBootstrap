@@ -24,13 +24,13 @@ namespace App.AngularJS.UIBootstrap.Routing
 
             if (filePath == "~/")
             {
-                filePath = "~/views/index.cshtml";
+                filePath = "~/views/app/index.cshtml";
             }
             else
             {
-                if (!filePath.StartsWith("~/views/", StringComparison.OrdinalIgnoreCase))
+                if (!filePath.StartsWith("~/views/app/partials", StringComparison.OrdinalIgnoreCase))
                 {
-                    filePath = filePath.Insert(2, "views/");
+                    filePath = filePath.Insert(2, "views/app/partials");
                 }
 
                 if (!filePath.EndsWith(".cshtml", StringComparison.OrdinalIgnoreCase))
@@ -43,8 +43,8 @@ namespace App.AngularJS.UIBootstrap.Routing
 
             if (handler == null)
             {
-                requestContext.RouteData.DataTokens.Add("templateUrl", "/views/404");
-                handler = WebPageHttpHandler.CreateFromVirtualPath("~/views/404.cshtml");
+                requestContext.RouteData.DataTokens.Add("templateUrl", "/views/app/partials/404");
+                handler = WebPageHttpHandler.CreateFromVirtualPath("~/views/app/partials/404.cshtml");
             }
             else
             {
