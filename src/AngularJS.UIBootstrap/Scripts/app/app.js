@@ -33,6 +33,11 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
                 templateUrl: partialsRoot+'/login',
                 controller: 'LoginCtrl'
             })
+            .state('secure', {
+                url: '/secure',
+                templateUrl: partialsRoot+'/secure',
+                controller: 'SecureCtrl'
+            })
             .state('otherwise', {
                 url: '*path',
                 templateUrl: partialsRoot+'/404',

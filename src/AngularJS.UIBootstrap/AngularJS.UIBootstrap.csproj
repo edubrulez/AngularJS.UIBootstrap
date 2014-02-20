@@ -104,6 +104,7 @@
     <Content Include="Scripts\app\controllers\error.js" />
     <Content Include="Scripts\app\controllers\home.js" />
     <Content Include="Scripts\app\controllers\login.js" />
+    <Content Include="Scripts\app\controllers\secure.js" />
     <Content Include="Scripts\app\directives\directives.js" />
     <Content Include="Scripts\app\filters\filters.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -465,6 +466,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_PageStart.cshtml" />
     <Content Include="Views\App\Partials\About.cshtml" />
+    <Content Include="Views\App\Partials\Secure.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

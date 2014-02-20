@@ -35,5 +35,13 @@ namespace App.AngularJS.UIBootstrap.Api
             FormsAuthentication.SignOut();
             return response;
         }
+
+        [Route("secure")]
+        [HttpGet]
+        [Authorize]
+        public User Secure()
+        {
+            return new User{UserName = "secure user"};
+        }
     }
 }
