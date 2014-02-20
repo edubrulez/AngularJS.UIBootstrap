@@ -10,16 +10,33 @@ angular.module('app.controllers')
         $scope.$root.title = 'AngularJS SPA | Sign In';
 
         $scope.login = function (user) {
-            $http.post('api/account/login', user)
-                .success(function(data, status, headers, config) {
+            $http({
+                method: 'POST',
+                url: '/Token',
+                data: "grant_type=password&username=" + user.userName + "&password=" + user.password,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+                .success(function (data, status, headers, config) {
+                    $http.defaults.headers.common["Authorization"] = 'Bearer ' + data.access_token;
                     user.authenticated = true;
                     $rootScope.user = user;
                     $location.path('/');
                 })
-                .error(function(data, status, headers, config) {
+                .error(function (data, status, headers, config) {
                     user.authenticated = false;
                     $rootScope.user = {};
                 });
+
+            //$http.post('api/account/login', user)
+            //    .success(function(data, status, headers, config) {
+            //        user.authenticated = true;
+            //        $rootScope.user = user;
+            //        $location.path('/');
+            //    })
+            //    .error(function(data, status, headers, config) {
+            //        user.authenticated = false;
+            //        $rootScope.user = {};
+            //    });
             
             return false;
         };

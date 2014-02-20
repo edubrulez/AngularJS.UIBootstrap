@@ -9,7 +9,7 @@ angular.module('app.controllers')
     .controller('SecureCtrl', ['$scope', '$location', '$window', '$http', function ($scope, $location, $window, $http) {
         $scope.$root.title = 'AngularJS SPA | Secured Resource';
 
-        $http.get('/api/account/secure')
+        $http.get('/api/account/userinfo')
             .success(function(user) {
                 $scope.returnedUser = user;
             });
