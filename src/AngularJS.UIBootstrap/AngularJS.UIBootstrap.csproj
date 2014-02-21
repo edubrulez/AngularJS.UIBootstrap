@@ -144,6 +144,7 @@
     <Content Include="Scripts\app\controllers\secure.js" />
     <Content Include="Scripts\app\directives\directives.js" />
     <Content Include="Scripts\app\filters\filters.js" />
+    <Content Include="Scripts\app\interceptors\http-auth-interceptor.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jasmine\jasmine-html.js" />

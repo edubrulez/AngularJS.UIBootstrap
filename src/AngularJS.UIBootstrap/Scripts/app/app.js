@@ -1,9 +1,9 @@
 ﻿'use strict';
 
-angular.module('app.controllers', []);
+angular.module('app.controllers', ['http-auth-interceptor']);
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
-angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services', 'app.directives', 'app.controllers'])
+angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services', 'app.directives', 'app.controllers', 'http-auth-interceptor'])
 
     // Gets executed during the provider registrations and configuration phase. Only providers and constants can be
     // injected here. This is to prevent accidental instantiation of services before they have been fully configured.
@@ -46,25 +46,25 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
 
         $locationProvider.html5Mode(true);
 
-        $httpProvider.responseInterceptors.push(function ($q, $location) {
-            return function (promise) {
-                return promise.then(
-                    function (response) {
-                        return response;
-                    },
-                    function (response) {
-                        if (response.status === 401)
-                            $location.url('/login');
-                        return $q.reject(response);
-                    }
-                );
-            };
-        });
+        //$httpProvider.responseInterceptors.push(function ($q, $location) {
+        //    return function (promise) {
+        //        return promise.then(
+        //            function (response) {
+        //                return response;
+        //            },
+        //            function (response) {
+        //                if (response.status === 401)
+        //                    $location.url('/login');
+        //                return $q.reject(response);
+        //            }
+        //        );
+        //    };
+        //});
     }])
 
     // Gets executed after the injector is created and are used to kickstart the application. Only instances and constants
     // can be injected here. This is to prevent further system configuration during application run time.
-    .run(['$templateCache', '$rootScope', '$state', '$stateParams', '$http', '$window', function ($templateCache, $rootScope, $state, $stateParams, $http, $window) {
+    .run(['$templateCache', '$rootScope', '$state', '$stateParams', '$http', '$window', '$location', function ($templateCache, $rootScope, $state, $stateParams, $http, $window, $location) {
 
         // <ui-view> contains a pre-rendered template for the current view
         // caching it will prevent a round-trip to a server at the first page load
@@ -82,10 +82,20 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
             $rootScope.layout = toState.layout;
         });
 
+        $rootScope.$on('event:auth-loginRequired', function () {
+            localStorage.
+            $location.url('/login');
+        });
+
+        //$rootScope.$on('event:auth-loginConfirmed', function() {
+        //    $location.url('/');
+        //});
+
         $rootScope.logout = function (user) {
             $rootScope.message = 'Logged out.';
             $http.post('api/account/logout', user)
                  .success(function (data, status, headers, config) {
+                     authService.logout
                      //localStorageService.clearAll();
                      $rootScope.user = {};
                      $window.location.href = '/';
