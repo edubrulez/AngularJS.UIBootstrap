@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('app.controllers', ['http-auth-interceptor']);
+angular.module('app.controllers', ['http-auth-interceptor', 'ui.bootstrap']);
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
 angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services', 'app.directives', 'app.controllers', 'http-auth-interceptor'])
@@ -27,12 +27,12 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
                 templateUrl: partialsRoot+'/about',
                 controller: 'AboutCtrl'
             })
-            .state('login', {
-                url: '/login',
-                layout: 'basic',
-                templateUrl: partialsRoot+'/login',
-                controller: 'LoginCtrl'
-            })
+            //.state('login', {
+            //    url: '/login',
+            //    //layout: 'basic',
+            //    templateUrl: partialsRoot+'/login',
+            //    controller: 'LoginCtrl'
+            //})
             .state('secure', {
                 url: '/secure',
                 templateUrl: partialsRoot+'/secure',
@@ -68,8 +68,8 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
 
         // <ui-view> contains a pre-rendered template for the current view
         // caching it will prevent a round-trip to a server at the first page load
-        var view = angular.element('#ui-view');
-        $templateCache.put(view.data('tmpl-url'), view.html());
+        //var view = angular.element('#ui-view');
+        //$templateCache.put(view.data('tmpl-url'), view.html());
 
         // Allows to retrieve UI Router state information from inside templates
         $rootScope.$state = $state;
@@ -83,7 +83,6 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
         });
 
         $rootScope.$on('event:auth-loginRequired', function () {
-            localStorage.
             $location.url('/login');
         });
 

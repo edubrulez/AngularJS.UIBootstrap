@@ -141,6 +141,7 @@
     <Content Include="Scripts\app\controllers\error.js" />
     <Content Include="Scripts\app\controllers\home.js" />
     <Content Include="Scripts\app\controllers\login.js" />
+    <Content Include="Scripts\app\controllers\modal.js" />
     <Content Include="Scripts\app\controllers\secure.js" />
     <Content Include="Scripts\app\directives\directives.js" />
     <Content Include="Scripts\app\filters\filters.js" />

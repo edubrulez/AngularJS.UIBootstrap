@@ -6,7 +6,7 @@
 angular.module('app.controllers')
 
     // Path: /login
-    .controller('LoginCtrl', function($scope, $location, $window, $http, $rootScope, authService) {
+    .controller('LoginCtrl', function($scope, $location, $window, $http, $rootScope, authService, $modal) {
         $scope.$root.title = 'AngularJS SPA | Sign In';
 
         $scope.login = function (user) {
@@ -19,6 +19,7 @@ angular.module('app.controllers')
                 .success(function (data, status, headers, config) {
                     $http.defaults.headers.common["Authorization"] = 'Bearer ' + data.access_token;  //http://stackoverflow.com/questions/19769422/net-web-api-2-owin-bearer-token-authentication
                     authService.loginConfirmed();
+                    $modal.close(function () { $scope.$apply(); });
                     //user.authenticated = true;
                     //$rootScope.user = user;
                     //$location.path('/');
