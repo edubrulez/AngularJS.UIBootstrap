@@ -1,6 +1,7 @@
 ﻿'use strict';
 
 angular.module('app.controllers', ['http-auth-interceptor', 'ui.bootstrap']);
+angular.module('app.services', ['ui.bootstrap']);
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module
 angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services', 'app.directives', 'app.controllers', 'http-auth-interceptor'])
@@ -64,7 +65,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
 
     // Gets executed after the injector is created and are used to kickstart the application. Only instances and constants
     // can be injected here. This is to prevent further system configuration during application run time.
-    .run(['$templateCache', '$rootScope', '$state', '$stateParams', '$http', '$window', '$location', function ($templateCache, $rootScope, $state, $stateParams, $http, $window, $location) {
+    .run(['$templateCache', '$rootScope', '$state', '$stateParams', '$http', '$window', '$location', 'modalService', function ($templateCache, $rootScope, $state, $stateParams, $http, $window, $location, modalService) {
 
         // <ui-view> contains a pre-rendered template for the current view
         // caching it will prevent a round-trip to a server at the first page load
@@ -83,7 +84,8 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
         });
 
         $rootScope.$on('event:auth-loginRequired', function () {
-            $location.url('/login');
+            modalService.login();
+            //$location.url('/login');
         });
 
         //$rootScope.$on('event:auth-loginConfirmed', function() {
@@ -94,7 +96,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
             $rootScope.message = 'Logged out.';
             $http.post('api/account/logout', user)
                  .success(function (data, status, headers, config) {
-                     authService.logout
+                     authService.logout();
                      //localStorageService.clearAll();
                      $rootScope.user = {};
                      $window.location.href = '/';
