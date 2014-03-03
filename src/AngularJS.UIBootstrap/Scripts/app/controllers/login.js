@@ -24,13 +24,10 @@ angular.module('app.controllers')
                     $http.defaults.headers.common["Authorization"] = 'Bearer ' + data.access_token;  //http://stackoverflow.com/questions/19769422/net-web-api-2-owin-bearer-token-authentication
                     authService.loginConfirmed();
                     $rootScope.loggedIn = true;
-                    //$rootScope.user = user;
                 })
                 .error(function (data, status, headers, config) {
                     authService.loginCancelled();
                     $rootScope.loggedIn = false;
-                    //user.authenticated = false;
-                    //$rootScope.user = {};
                 });
             
             return false;
@@ -43,10 +40,6 @@ angular.module('app.controllers')
                      $http.defaults.headers.common["Authorization"] = '';
                      $rootScope.loggedIn = false;
                      $location.url('/');
-                     //authService.logout();
-                     //localStorageService.clearAll();
-                     //$rootScope.user = {};
-                     //$window.location.href = '/';
                  });
         };
 
