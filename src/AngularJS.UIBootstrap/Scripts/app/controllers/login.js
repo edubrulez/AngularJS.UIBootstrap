@@ -6,8 +6,12 @@
 angular.module('app.controllers')
 
     // Path: /login
-    .controller('LoginCtrl', function($scope, $location, $window, $http, $rootScope, authService, $modal) {
-        $scope.$root.title = 'AngularJS SPA | Sign In';
+    .controller('LoginCtrl', function($scope, $location, $window, $http, $rootScope, authService, modalService) {
+        //$scope.$root.title = 'AngularJS SPA | Sign In';
+        
+        $scope.openLogin = function () {
+            modalService.login();
+        };
 
         $scope.login = function (user) {
             $http({
@@ -19,29 +23,31 @@ angular.module('app.controllers')
                 .success(function (data, status, headers, config) {
                     $http.defaults.headers.common["Authorization"] = 'Bearer ' + data.access_token;  //http://stackoverflow.com/questions/19769422/net-web-api-2-owin-bearer-token-authentication
                     authService.loginConfirmed();
-                    //$modal.close(function () { $scope.$apply(); });
-                    //user.authenticated = true;
+                    $rootScope.loggedIn = true;
                     //$rootScope.user = user;
-                    //$location.path('/');
                 })
                 .error(function (data, status, headers, config) {
                     authService.loginCancelled();
+                    $rootScope.loggedIn = false;
                     //user.authenticated = false;
                     //$rootScope.user = {};
                 });
-
-            //$http.post('api/account/login', user)
-            //    .success(function(data, status, headers, config) {
-            //        user.authenticated = true;
-            //        $rootScope.user = user;
-            //        $location.path('/');
-            //    })
-            //    .error(function(data, status, headers, config) {
-            //        user.authenticated = false;
-            //        $rootScope.user = {};
-            //    });
             
             return false;
+        };
+
+        $scope.logout = function (user) {
+            $rootScope.message = 'Logged out.';
+            $http.post('api/account/logout', user)
+                 .success(function (data, status, headers, config) {
+                     $http.defaults.headers.common["Authorization"] = '';
+                     $rootScope.loggedIn = false;
+                     $location.url('/');
+                     //authService.logout();
+                     //localStorageService.clearAll();
+                     //$rootScope.user = {};
+                     //$window.location.href = '/';
+                 });
         };
 
          $scope.$on('$viewContentLoaded', function() {

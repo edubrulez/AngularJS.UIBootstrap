@@ -90,17 +90,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
 
         $rootScope.$on('event:auth-loginConfirmed', function () {
             modalService.close();
+            //$rootScope.$apply();
             //$location.url('/');
         });
-
-        $rootScope.logout = function (user) {
-            $rootScope.message = 'Logged out.';
-            $http.post('api/account/logout', user)
-                 .success(function (data, status, headers, config) {
-                     authService.logout();
-                     //localStorageService.clearAll();
-                     $rootScope.user = {};
-                     $window.location.href = '/';
-                 });
-        };
     }]);

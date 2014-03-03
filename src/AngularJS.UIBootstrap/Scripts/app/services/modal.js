@@ -25,13 +25,14 @@ angular.module('app.services')
                     //$scope.selected = response;
                     //console.log(response);
                 }, function () {
-                    //console.log('Modal dismissed at: ' + new Date());
+                    modalInstance = null;
                 });
 
             },
             
             close: function() {
-               modalInstance.close(function () { $scope.$apply(); });
+                modalInstance.close();
+                modalInstance = null;
             }
         }
     });
