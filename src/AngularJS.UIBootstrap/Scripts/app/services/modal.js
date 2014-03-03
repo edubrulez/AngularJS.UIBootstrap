@@ -2,12 +2,18 @@
 
 angular.module('app.services')
     .factory('modalService', function ($modal) {
+        var modalInstance;
+        
         return {
             login: function() {
                 var appRoot = '/views/app';
                 var partialsRoot = appRoot + '/partials';
                 
-                var modalInstance = $modal.open({
+                if (modalInstance != null) {
+                    modalInstance.close();
+                }
+                
+                modalInstance = $modal.open({
                     templateUrl: partialsRoot + '/login',
                     controller: 'LoginCtrl',
                     backdrop: true,
@@ -22,6 +28,10 @@ angular.module('app.services')
                     //console.log('Modal dismissed at: ' + new Date());
                 });
 
+            },
+            
+            close: function() {
+               modalInstance.close(function () { $scope.$apply(); });
             }
         }
     });

@@ -88,9 +88,10 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
             //$location.url('/login');
         });
 
-        //$rootScope.$on('event:auth-loginConfirmed', function() {
-        //    $location.url('/');
-        //});
+        $rootScope.$on('event:auth-loginConfirmed', function () {
+            modalService.close();
+            //$location.url('/');
+        });
 
         $rootScope.logout = function (user) {
             $rootScope.message = 'Logged out.';
