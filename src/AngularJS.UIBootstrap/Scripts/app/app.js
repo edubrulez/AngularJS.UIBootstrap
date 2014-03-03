@@ -46,21 +46,6 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
             });
 
         $locationProvider.html5Mode(true);
-
-        //$httpProvider.responseInterceptors.push(function ($q, $location) {
-        //    return function (promise) {
-        //        return promise.then(
-        //            function (response) {
-        //                return response;
-        //            },
-        //            function (response) {
-        //                if (response.status === 401)
-        //                    $location.url('/login');
-        //                return $q.reject(response);
-        //            }
-        //        );
-        //    };
-        //});
     }])
 
     // Gets executed after the injector is created and are used to kickstart the application. Only instances and constants
@@ -85,12 +70,9 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.filters', 'app.services
 
         $rootScope.$on('event:auth-loginRequired', function () {
             modalService.login();
-            //$location.url('/login');
         });
 
         $rootScope.$on('event:auth-loginConfirmed', function () {
             modalService.close();
-            //$rootScope.$apply();
-            //$location.url('/');
         });
     }]);
