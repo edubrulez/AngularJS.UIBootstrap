@@ -37,8 +37,9 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
+  .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   margin-left: -5px; // Offset the first child's margin
-  &:extend(.clearfix all);
+  //&:extend(.clearfix all); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
 
   .btn-group,
   .input-group {
@@ -96,9 +97,9 @@
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-xs > .btn { .btn-xs(); }
-.btn-group-sm > .btn { .btn-sm(); }
-.btn-group-lg > .btn { .btn-lg(); }
+.btn-group-xs > .btn { .btn-xs; } // &:extend(.btn-xs); } //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
+.btn-group-sm > .btn { .btn-sm; } // &:extend(.btn-sm); } //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
+.btn-group-lg > .btn { .btn-lg; } // &:extend(.btn-lg); } //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
 
 
 // Split button dropdowns
@@ -156,7 +157,8 @@
 
   // Clear floats so dropdown menus can be properly placed
   > .btn-group {
-    &:extend(.clearfix all);
+      .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
+    //&:extend(.clearfix all); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
     > .btn {
       float: none;
     }

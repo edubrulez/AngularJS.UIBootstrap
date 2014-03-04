@@ -9,13 +9,14 @@
 // other navbar variations.
 
 .navbar {
+  .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   position: relative;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
   border: 1px solid transparent;
 
   // Prevent floats from breaking the navbar
-  &:extend(.clearfix all);
+  //&:extend(.clearfix all); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
 
   @media (min-width: @grid-float-breakpoint) {
     border-radius: @navbar-border-radius;
@@ -29,7 +30,8 @@
 // styling of responsive aspects.
 
 .navbar-header {
-  &:extend(.clearfix all);
+  .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
+  //&:extend(.clearfix all); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
 
   @media (min-width: @grid-float-breakpoint) {
     float: left;
@@ -48,13 +50,14 @@
 // content for the user's viewport.
 
 .navbar-collapse {
+  .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   max-height: @navbar-collapse-max-height;
   overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-  &:extend(.clearfix all);
+  // &:extend(.clearfix all); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   -webkit-overflow-scrolling: touch;
 
   &.in {
@@ -155,7 +158,7 @@
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
-  height: @line-height-computed;
+  height: @navbar-height;
 
   &:hover,
   &:focus {

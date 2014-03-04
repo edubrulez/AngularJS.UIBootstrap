@@ -4,11 +4,12 @@
 
 
 .pager {
+  .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   padding-left: 0;
   margin: @line-height-computed 0;
   list-style: none;
   text-align: center;
-  &:extend(.clearfix all);
+  //&:extend(.clearfix all); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   li {
     display: inline;
     > a,

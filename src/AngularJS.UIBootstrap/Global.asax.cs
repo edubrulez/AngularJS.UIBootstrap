@@ -4,6 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Web.Http;
+
 namespace App.AngularJS.UIBootstrap
 {
     using System.Web;
@@ -14,6 +16,7 @@ namespace App.AngularJS.UIBootstrap
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

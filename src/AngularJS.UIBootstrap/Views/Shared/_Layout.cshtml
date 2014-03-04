@@ -32,10 +32,19 @@
                     <li>
                         <a href="./contacts">Contacts</a>
                     </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="./login">Sign In</a>
+                        <a href="./secure">Secure</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-controller="LoginCtrl">
+                    <li ng-hide="loggedIn">
+                        <a ng-click="register()">Register</a>
+                    </li>
+                    <li ng-hide="loggedIn">
+                        <a ng-click="openLogin()">Sign In</a>
+                    </li>
+                    <li ng-show="loggedIn">
+                        <a ng-click="logout(user)">Sign Out</a>
                     </li>
                 </ul>
             </nav>
@@ -46,7 +55,7 @@
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/js/jquery")
+    
     @Scripts.Render("~/js/angular")
     @Scripts.Render("~/js/bootstrap")
     @Scripts.Render("~/js/app")
