@@ -33,6 +33,13 @@ angular.module('app.controllers')
             return false;
         };
 
+        $scope.cancelLogin = function() {
+            authService.loginCancelled();
+            $rootScope.loggedIn = false;
+            modalService.close();
+            $location.url('/');
+        };
+
         $scope.logout = function (user) {
             $rootScope.message = 'Logged out.';
             $http.post('api/account/logout', user)
