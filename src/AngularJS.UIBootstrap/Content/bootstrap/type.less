@@ -205,8 +205,9 @@ dd {
       .text-overflow();
     }
     dd {
+      .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
       margin-left: @component-offset-horizontal;
-      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
+      //&:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present  //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
     }
   }
 }

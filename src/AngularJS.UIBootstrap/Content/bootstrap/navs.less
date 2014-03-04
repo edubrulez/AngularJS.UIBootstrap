@@ -7,10 +7,11 @@
 // --------------------------------------------------
 
 .nav {
+  .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
-  &:extend(.clearfix all);
+  //&:extend(.clearfix all); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
 
   > li {
     position: relative;

@@ -98,11 +98,12 @@
 
 // Footer (for actions)
 .modal-footer {
+  .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   margin-top: 15px;
   padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
   text-align: right; // right align buttons
   border-top: 1px solid @modal-footer-border-color;
-  &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
+  //&:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
 
   // Properly space out buttons
   .btn + .btn {

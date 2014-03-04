@@ -14,8 +14,9 @@
 
 // Panel contents
 .panel-body {
+  .clearfix; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
   padding: @panel-body-padding;
-  &:extend(.clearfix all);
+  //&:extend(.clearfix all); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
 }
 
 // Optional heading

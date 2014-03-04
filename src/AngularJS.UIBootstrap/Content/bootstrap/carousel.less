@@ -21,7 +21,8 @@
     // Account for jankitude on images
     > img,
     > a > img {
-      &:extend(.img-responsive);
+      .img-responsive; //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
+      //&:extend(.img-responsive); //http://stackoverflow.com/questions/21940204/dotless-on-azure-web-project-doesnt-understand-extend
       line-height: 1;
     }
   }
