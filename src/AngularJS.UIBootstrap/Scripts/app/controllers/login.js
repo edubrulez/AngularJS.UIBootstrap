@@ -14,6 +14,8 @@ angular.module('app.controllers')
         };
 
         $scope.login = function (user) {
+            $rootScope.invalidLogin = false;
+            
             $http({
                 method: 'POST',
                 url: '/Token',
@@ -28,6 +30,7 @@ angular.module('app.controllers')
                 .error(function (data, status, headers, config) {
                     authService.loginCancelled();
                     $rootScope.loggedIn = false;
+                    $rootScope.invalidLogin = true;
                 });
             
             return false;

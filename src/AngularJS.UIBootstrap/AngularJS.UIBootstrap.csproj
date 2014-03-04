@@ -201,7 +201,6 @@
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Content\validation.less" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jasmine-samples\Player.js" />
     <Content Include="Scripts\jasmine-samples\PlayerSpec.js" />
