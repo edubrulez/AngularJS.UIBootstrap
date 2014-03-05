@@ -114,4 +114,28 @@ describe('Controllers: LoginCtrl', function () {
         });
 
     });
+
+    describe('Open login modal', function() {
+        var scope, ctrl;
+        var calledLogin = false;
+
+        beforeEach(inject(function($rootScope, $controller) {
+            scope = $rootScope.$new();
+
+            var fakeModalService = {
+                login: function () { calledLogin = true; }
+            };
+
+            ctrl = $controller('LoginCtrl', {
+                $scope: scope,
+                modalService: fakeModalService
+            });
+
+            scope.openLogin();
+        }));
+
+        it('Should call the modal servie login method', function() {
+            expect(calledLogin).toBe(true);
+        });
+    });
 });
