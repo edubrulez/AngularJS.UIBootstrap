@@ -45,13 +45,13 @@ angular.module('app.controllers')
         };
 
         $scope.logout = function (user) {
-            $rootScope.message = 'Logged out.';
-            $http.post('api/account/logout', user)
-                 .success(function (data, status, headers, config) {
-                     $http.defaults.headers.common["Authorization"] = '';
-                     $rootScope.loggedIn = false;
-                     $location.url('/');
-                 });
+            //$rootScope.message = 'Logged out.';
+            $http.defaults.headers.common["Authorization"] = '';
+            $rootScope.loggedIn = false;
+
+            $http.post('api/account/logout', user);
+
+            $location.url('/');
         };
 
          $scope.$on('$viewContentLoaded', function() {

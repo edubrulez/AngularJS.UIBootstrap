@@ -134,8 +134,81 @@ describe('Controllers: LoginCtrl', function () {
             scope.openLogin();
         }));
 
-        it('Should call the modal servie login method', function() {
+        it('Should call the modal service login method', function() {
             expect(calledLogin).toBe(true);
+        });
+    });
+
+    describe('Cancel login modal', function() {
+        var scope, ctrl, location;
+        var closedModal = false;
+        var loginCanceledCalled = false;
+
+        beforeEach(inject(function($rootScope, $controller, $location) {
+            scope = $rootScope.$new();
+            location = $location;
+
+            var fakeModalService = {
+                close: function() { closedModal = true; }
+            };
+
+            var fakeAuthService = {
+                loginCanceled: function () { loginCanceledCalled = true; }
+            };
+
+            ctrl = $controller('LoginCtrl', {
+                $scope: scope,
+                modalService: fakeModalService,
+                authService: fakeAuthService
+            });
+
+            scope.cancelLogin();
+        }));
+
+        it('should call auth contoroller loginCanceled', function () {
+            expect(loginCanceledCalled).toBe(true);
+        });
+
+        it('should turn off logged in flag', function () {
+            expect(scope.$root.loggedIn).toBe(false);
+        });
+
+        it('should call the modal service close method', function() {
+            expect(closedModal).toBe(true);
+        });
+
+        it('should redirect to main page', function() {
+            expect(location.path()).toBe('/');
+        });
+    });
+
+    describe('Logout', function () {
+        var scope, ctrl, location, httpBackend, http;
+
+        beforeEach(inject(function ($rootScope, $controller, $location, $httpBackend, $http) {
+            scope = $rootScope.$new();
+            location = $location;
+            httpBackend = $httpBackend;
+            http = $http;
+
+            ctrl = $controller('LoginCtrl', {
+                $scope: scope,
+                $http: $http
+            });
+
+            scope.logout();
+        }));
+
+        it('should remove bearer token', function () {
+            expect(http.defaults.headers.common["Authorization"]).toBe('');
+        });
+
+        it('should turn off logged in flag', function () {
+            expect(scope.$root.loggedIn).toBe(false);
+        });
+
+        it('should redirect to main page', function () {
+            expect(location.path()).toBe('/');
         });
     });
 });
