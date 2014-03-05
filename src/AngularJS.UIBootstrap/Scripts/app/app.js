@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('app.controllers', ['http-auth-interceptor', 'ui.bootstrap']);
+angular.module('app.controllers', ['http-auth-interceptor', 'app.services']);
 angular.module('app.services', ['ui.bootstrap']);
 
 // Declares how the application should be bootstrapped. See: http://docs.angularjs.org/guide/module

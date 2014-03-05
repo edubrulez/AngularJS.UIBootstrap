@@ -6,7 +6,8 @@
 angular.module('app.controllers')
 
     // Path: /login
-    .controller('LoginCtrl', function($scope, $location, $window, $http, $rootScope, authService, modalService) {
+    .controller('LoginCtrl', ['$scope', '$location', '$window', '$http', '$rootScope', 'authService', 'modalService', function ($scope, $location, $window, $http, $rootScope, authService, modalService) {
+        $rootScope.loggedIn = false;
         //$scope.$root.title = 'AngularJS SPA | Sign In';
         
         $scope.openLogin = function () {
@@ -56,4 +57,4 @@ angular.module('app.controllers')
          $scope.$on('$viewContentLoaded', function() {
             $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
         });
-    });
+    }]);
