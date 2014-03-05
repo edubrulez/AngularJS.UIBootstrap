@@ -5,20 +5,66 @@
 'use strict';
 
 describe('Controllers: LoginCtrl', function () {
-    var $scope, ctrl;
 
     beforeEach(module('app.controllers'));
 
-    beforeEach(inject(function ($rootScope, $controller) {
-        $scope = $rootScope.$new();
-        ctrl = $controller('LoginCtrl', { $scope: $scope });
-    }));
-    
-    it('should default to not logged in', function() {
-        expect($scope.$root.loggedIn).toBe(false);
-    })
+    describe('Default', function() {        
+        var scope, ctrl;
 
-    it('should not set a page title', function () {
-        expect($scope.$root.title).toBe(undefined);
+        beforeEach(inject(function ($rootScope, $controller) {
+            scope = $rootScope.$new();
+            ctrl = $controller('LoginCtrl', { $scope: scope });
+        }));
+
+        it('should not be logged in yet', function() {
+            expect(scope.$root.loggedIn).toBe(false);
+        });
+
+        it('should not set a page title', function() {
+            expect(scope.$root.title).toBe(undefined);
+        });
+    });
+
+    describe('Login: Success', function () {
+        var scope, rootScope, ctrl, httpBackend, http;
+        var loginConfirmedCalled = false;
+        
+        beforeEach(inject(function ($rootScope, $controller, $httpBackend, $http) {
+            rootScope = $rootScope;
+            scope = $rootScope.$new();
+            httpBackend = $httpBackend;
+            http = $http;
+            
+            httpBackend.when("POST", "/Token").respond({ access_token: 'token' });
+
+            var fakeAuthService = {
+                loginConfirmed: function() {
+                    loginConfirmedCalled = true;
+                }
+            };
+            
+            ctrl = $controller('LoginCtrl', {
+                $scope: scope,
+                $http: $http,
+                $rootScope: $rootScope,
+                authService: fakeAuthService
+            });
+
+            scope.login({});
+            httpBackend.flush();
+        }));
+
+        it('should set bearer token', function () {
+            expect(http.defaults.headers.common["Authorization"]).toBe('Bearer token');
+        });
+
+        it('should call auth contoroller loginConfirmed', function() {
+            expect(loginConfirmedCalled).toBe(true);
+        });
+
+        it('should set logged in flag', function() {
+            expect(rootScope.loggedIn).toBe(true);
+        });
+
     });
 });
