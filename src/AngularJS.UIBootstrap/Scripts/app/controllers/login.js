@@ -7,9 +7,7 @@ angular.module('app.controllers')
 
     // Path: /login
     .controller('LoginCtrl', ['$scope', '$location', '$window', '$http', '$rootScope', 'authService', 'modalService', function ($scope, $location, $window, $http, $rootScope, authService, modalService) {
-        if ($rootScope.loggedIn == undefined) {
-            $rootScope.loggedIn = false;
-        }
+        $rootScope.loggedIn = false;
         //$scope.$root.title = 'AngularJS SPA | Sign In';
         
         $scope.openLogin = function () {
@@ -31,7 +29,7 @@ angular.module('app.controllers')
                     $rootScope.loggedIn = true;
                 })
                 .error(function (data, status, headers, config) {
-                    authService.loginCancelled();
+                    authService.loginCanceled();
                     $rootScope.loggedIn = false;
                     $rootScope.invalidLogin = true;
                 });
@@ -40,7 +38,7 @@ angular.module('app.controllers')
         };
 
         $scope.cancelLogin = function() {
-            authService.loginCancelled();
+            authService.loginCanceled();
             $rootScope.loggedIn = false;
             modalService.close();
             $location.url('/');

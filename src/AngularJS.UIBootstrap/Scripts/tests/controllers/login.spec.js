@@ -66,5 +66,52 @@ describe('Controllers: LoginCtrl', function () {
             expect(rootScope.loggedIn).toBe(true);
         });
 
+        it('should turn off invalid login flag', function () {
+            expect(rootScope.invalidLogin).toBe(false);
+        });
+
+    });
+
+    describe('Login: Failure', function () {
+        var scope, rootScope, ctrl, httpBackend, http;
+        var loginCanceledCalled = false;
+
+        beforeEach(inject(function ($rootScope, $controller, $httpBackend, $http) {
+            rootScope = $rootScope;
+            scope = $rootScope.$new();
+            httpBackend = $httpBackend;
+            http = $http;
+
+            httpBackend.when("POST", "/Token").respond(400, {});
+
+            var fakeAuthService = {
+                loginCanceled: function () {
+                    loginCanceledCalled = true;
+                }
+            };
+
+            ctrl = $controller('LoginCtrl', {
+                $scope: scope,
+                $http: $http,
+                $rootScope: $rootScope,
+                authService: fakeAuthService
+            });
+
+            scope.login({});
+            httpBackend.flush();
+        }));
+
+        it('should call auth contoroller loginCanceled', function () {
+            expect(loginCanceledCalled).toBe(true);
+        });
+
+        it('should turn off logged in flag', function () {
+            expect(rootScope.loggedIn).toBe(false);
+        });
+
+        it('should set invalid login flag', function() {
+            expect(rootScope.invalidLogin).toBe(true);
+        });
+
     });
 });

@@ -30,7 +30,7 @@
              * @param data an optional argument to pass on to $broadcast.
              * @param reason if provided, the requests are rejected; abandoned otherwise.
              */
-            loginCancelled: function (data, reason) {
+            loginCanceled: function (data, reason) {
                 httpBuffer.rejectAll(reason);
                 $rootScope.$broadcast('event:auth-loginCancelled', data);
             }
